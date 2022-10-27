@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../mix.css";
+
 
 export default function Addemployee() {
   const [inpval, setInpval] = useState({
@@ -12,7 +13,10 @@ export default function Addemployee() {
     communication: "",
     company: "",
   });
-
+const history = useNavigate()
+  const goBack =()=>{
+history('/dash')
+  }
   const setVal = (e) => {
     const { name, value } = e.target;
 
@@ -152,11 +156,11 @@ export default function Addemployee() {
                 Submit
               </Link>
             </button>
-            <button className="btn">
-              <Link to="/dash" style={{ textDecoration: "none" }}>
+            <button className="btn" onClick={goBack}>
+              {/* <Link to="/dash" style={{ textDecoration: "none" }}> */}
                 {" "}
                 Go Back
-              </Link>
+              {/* </Link> */}
             </button>
           </form>
           <ToastContainer />
